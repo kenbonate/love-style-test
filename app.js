@@ -51,11 +51,11 @@ const pdfBtn = $('#pdfBtn');
 
 // ---- Likert Scale Config ----
 const LIKERT_OPTIONS = [
-  { value: 1, icon: '🅐', label: '非常\n不符合' },
-  { value: 2, icon: '🅑', label: '比较\n不符合' },
-  { value: 3, icon: '🅒', label: '一般\n中立' },
-  { value: 4, icon: '🅓', label: '比较\n符合' },
-  { value: 5, icon: '🅔', label: '非常\n符合' }
+  { value: 1, icon: 'A', label: '非常\n不符合' },
+  { value: 2, icon: 'B', label: '比较\n不符合' },
+  { value: 3, icon: 'C', label: '一般\n中立' },
+  { value: 4, icon: 'D', label: '比较\n符合' },
+  { value: 5, icon: 'E', label: '非常\n符合' }
 ];
 
 // ---- Dimension Color Map ----
