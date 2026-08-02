@@ -47,14 +47,15 @@ const summaryContent = $('#summaryContent');
 
 const restartBtn = $('#restartBtn');
 const copyBtn = $('#copyBtn');
+const pdfBtn = $('#pdfBtn');
 
 // ---- Likert Scale Config ----
 const LIKERT_OPTIONS = [
-  { value: 1, icon: '😤', label: '非常\n不符合' },
-  { value: 2, icon: '🤔', label: '比较\n不符合' },
-  { value: 3, icon: '😐', label: '一般\n中立' },
-  { value: 4, icon: '😊', label: '比较\n符合' },
-  { value: 5, icon: '😆', label: '非常\n符合' }
+  { value: 1, icon: '🅐', label: '非常\n不符合' },
+  { value: 2, icon: '🅑', label: '比较\n不符合' },
+  { value: 3, icon: '🅒', label: '一般\n中立' },
+  { value: 4, icon: '🅓', label: '比较\n符合' },
+  { value: 5, icon: '🅔', label: '非常\n符合' }
 ];
 
 // ---- Dimension Color Map ----
@@ -102,6 +103,7 @@ async function init() {
   nextBtn.addEventListener('click', nextQuestion);
   restartBtn.addEventListener('click', restartQuiz);
   copyBtn.addEventListener('click', copyResult);
+  pdfBtn.addEventListener('click', exportPDF);
 
   // Result tab switching
   resultTabs.addEventListener('click', (e) => {
@@ -115,8 +117,10 @@ async function init() {
     if (quizArea.style.display === 'none') return;
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevQuestion();
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextQuestion();
-    if (e.key >= '1' && e.key <= '5') {
-      selectAnswer(parseInt(e.key));
+    // 数字键 1-5 或字母键 A-E 选择答案
+    const keyMap = {'1':1,'2':2,'3':3,'4':4,'5':5,'a':1,'b':2,'c':3,'d':4,'e':5,'A':1,'B':2,'C':3,'D':4,'E':5};
+    if (keyMap[e.key] !== undefined) {
+      selectAnswer(keyMap[e.key]);
     }
   });
 
@@ -750,6 +754,125 @@ async function copyResult() {
   } catch {
     copyBtn.textContent = '❌ 复制失败';
     setTimeout(() => { copyBtn.textContent = '📋 复制结果报告'; }, 2000);
+  }
+}
+
+// ============================================================
+// EXPORT PDF
+// ============================================================
+async function exportPDF() {
+  const origText = pdfBtn.textContent;
+  pdfBtn.textContent = '⏳ 生成中...';
+  pdfBtn.disabled = true;
+
+  const scores = scoreTest();
+  const dims = TEST_CONFIG.dimensions;
+
+  // Build a clean report HTML combining all 4 tabs
+  let reportHTML = `
+    <div style="font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#2D1B2E;padding:24px;max-width:700px;margin:0 auto;">
+      <h1 style="text-align:center;font-size:22px;color:#E8736E;margin-bottom:4px;">💕 ${TEST_CONFIG.title}</h1>
+      <p style="text-align:center;font-size:12px;color:#A090A0;margin-bottom:20px;">${TEST_CONFIG.subtitle}  |  报告生成时间：${new Date().toLocaleDateString('zh-CN')}</p>
+      <hr style="border:none;border-top:2px solid #F0E0E5;margin-bottom:20px;">
+
+      <h2 style="font-size:17px;color:#E8736E;margin-bottom:12px;">📊 五维度得分总览</h2>
+      <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+        <tr style="background:#FDF0EF;font-weight:700;font-size:13px;">
+          <td style="padding:8px 10px;border:1px solid #F0E0E5;">维度</td>
+          <td style="padding:8px 10px;border:1px solid #F0E0E5;">得分</td>
+          <td style="padding:8px 10px;border:1px solid #F0E0E5;">等级</td>
+          <td style="padding:8px 10px;border:1px solid #F0E0E5;">类型</td>
+        </tr>`;
+
+  Object.entries(dims).forEach(([dimKey, dim]) => {
+    const score = scores[dimKey];
+    const level = getScoreLevel(score);
+    const template = window.__REPORT_TEMPLATES__[dimKey][getLevelKey(score)];
+    reportHTML += `
+        <tr style="font-size:13px;">
+          <td style="padding:8px 10px;border:1px solid #F0E0E5;">${dim.icon} ${dim.name}</td>
+          <td style="padding:8px 10px;border:1px solid #F0E0E5;font-weight:700;">${score}/60</td>
+          <td style="padding:8px 10px;border:1px solid #F0E0E5;color:${level.color};">${level.label}</td>
+          <td style="padding:8px 10px;border:1px solid #F0E0E5;">${template.headline}</td>
+        </tr>`;
+  });
+
+  reportHTML += `</table>`;
+
+  // Per-dimension deep dive
+  reportHTML += `<h2 style="font-size:17px;color:#E8736E;margin-bottom:12px;">🔍 各维度深度解读</h2>`;
+
+  Object.entries(dims).forEach(([dimKey, dim]) => {
+    const score = scores[dimKey];
+    const level = getScoreLevel(score);
+    const template = window.__REPORT_TEMPLATES__[dimKey][getLevelKey(score)];
+
+    reportHTML += `
+      <div style="margin-bottom:16px;padding:14px;background:#FEFCFB;border-left:4px solid ${level.color};border-radius:4px;">
+        <h3 style="font-size:15px;color:${level.color};margin:0 0 6px 0;">${dim.icon} ${dim.name}：${template.headline}（${score}/60 · ${level.label}）</h3>
+        <p style="font-size:12px;color:#6B5B6B;line-height:1.8;margin:0 0 10px 0;">${template.deepInsight.replace(/<br\s*\/?>/g,'\n')}</p>
+        <p style="font-size:12px;color:#6B5B6B;line-height:1.8;margin:0 0 4px 0;"><strong>💪 核心优势：</strong>${template.strengths.replace(/<br\s*\/?>/g,'\n')}</p>
+        <p style="font-size:12px;color:#6B5B6B;line-height:1.8;margin:0 0 4px 0;"><strong>🌱 成长空间：</strong>${(template.growthAreas||'').replace(/<br\s*\/?>/g,'\n')}</p>
+        <p style="font-size:12px;color:#6B5B6B;line-height:1.8;margin:0;"><strong>🗺️ 成长路线：</strong>${template.growthRoadmap.replace(/<br\s*\/?>/g,'\n')}</p>
+      </div>`;
+  });
+
+  // Combined profile
+  const allLevels = {};
+  Object.keys(dims).forEach(dk => {
+    const lvl = getScoreLevel(scores[dk]);
+    if (lvl.label === '高' || lvl.label === '偏高') allLevels[dk] = 'high';
+    else if (lvl.label === '低' || lvl.label === '偏低') allLevels[dk] = 'low';
+    else allLevels[dk] = 'mid';
+  });
+
+  const matched = window.__REPORT_TEMPLATES__.combinedProfiles.filter(p => {
+    return Object.entries(p.conditions).every(([dk, req]) => allLevels[dk] === req);
+  });
+
+  if (matched.length > 0) {
+    reportHTML += `<h2 style="font-size:17px;color:#E8736E;margin-bottom:12px;">🧩 匹配的恋爱类型</h2>`;
+    matched.forEach(p => {
+      reportHTML += `
+        <div style="margin-bottom:12px;padding:14px;background:#FFF5ED;border-radius:4px;">
+          <h3 style="font-size:14px;color:#E8985E;margin:0 0 6px 0;">${p.name}</h3>
+          <p style="font-size:12px;color:#6B5B6B;line-height:1.8;margin:0 0 4px 0;">${p.description}</p>
+          <p style="font-size:12px;color:#6B5B6B;line-height:1.8;margin:0 0 4px 0;">${p.famous}</p>
+          <p style="font-size:12px;color:#6B5B6B;line-height:1.8;margin:0;">💡 ${p.advice}</p>
+        </div>`;
+    });
+  }
+
+  reportHTML += `
+      <hr style="border:none;border-top:1px solid #F0E0E5;margin:20px 0;">
+      <p style="text-align:center;font-size:11px;color:#A090A0;">${TEST_CONFIG.disclaimer}</p>
+    </div>`;
+
+  // Use html2pdf to generate and download
+  try {
+    // Create temporary element
+    const container = document.createElement('div');
+    container.style.cssText = 'position:fixed;left:-9999px;top:0;width:700px;z-index:-1;';
+    container.innerHTML = reportHTML;
+    document.body.appendChild(container);
+
+    const opt = {
+      margin: [10, 10, 10, 10],
+      filename: `${TEST_CONFIG.title}_${new Date().toISOString().slice(0,10)}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    await html2pdf().set(opt).from(container).save();
+
+    document.body.removeChild(container);
+    pdfBtn.textContent = '✅ 下载完成！';
+    setTimeout(() => { pdfBtn.textContent = origText; pdfBtn.disabled = false; }, 2500);
+  } catch (err) {
+    console.error('PDF export failed:', err);
+    pdfBtn.textContent = '❌ 导出失败，请重试';
+    setTimeout(() => { pdfBtn.textContent = origText; pdfBtn.disabled = false; }, 2500);
   }
 }
 

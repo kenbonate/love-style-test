@@ -252,7 +252,7 @@ body {
 .likert-option.selected {
   border-color: var(--primary);
   background: var(--primary-light);
-  box-shadow: 0 0 0 3px rgba(91, 106, 191, 0.12);
+  box-shadow: 0 0 0 3px rgba(232, 115, 110, 0.15);
 }
 .likert-option__icon {
   font-size: 24px;

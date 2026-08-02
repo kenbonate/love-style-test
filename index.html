@@ -109,7 +109,8 @@
       <!-- 操作按钮 -->
       <div class="result-actions">
         <button id="restartBtn" class="btn btn--secondary">🔄 重新测试</button>
-        <button id="copyBtn" class="btn btn--primary">📋 复制结果报告</button>
+        <button id="copyBtn" class="btn btn--secondary">📋 复制结果报告</button>
+        <button id="pdfBtn" class="btn btn--primary">📥 导出PDF报告</button>
       </div>
     </section>
   </div>
@@ -119,6 +120,7 @@
     <p>结果仅供自我探索参考，不构成婚恋建议或临床诊断</p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="config-data.js"></script>
   <script src="report-templates.js"></script>
   <script src="app.js"></script>
