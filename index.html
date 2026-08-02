@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>恋爱风格深度测评 · 60题专业版</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <div class="top-bar">
+    <span class="top-bar__badge">💕 依恋理论框架</span>
+    <span class="top-bar__badge">📋 60题深度测评</span>
+    <span class="top-bar__badge">⏱️ 约5-8分钟</span>
+  </div>
+
+  <div class="page-shell">
+    <!-- 头部 -->
+    <header class="hero" id="heroSection">
+      <div class="hero__icon">💕</div>
+      <h1 class="hero__title" id="testTitle">恋爱风格深度测评</h1>
+      <p class="hero__subtitle">融合依恋理论 · 爱情三角理论 · 情绪表达研究</p>
+      <p class="hero__intro" id="testIntro">
+        本测评融合依恋理论、爱情三角理论、情绪表达研究三大框架，从<strong>依恋安全感、亲密开放度、浪漫表达力、关系理性度、冲突修复力</strong>五个维度全面解析你的恋爱风格。60道题目，5级评分，约5-8分钟完成。
+      </p>
+      <button class="btn btn--start" id="startBtn">🚀 开始测评</button>
+    </header>
+
+    <!-- 测试区域 -->
+    <main class="quiz-card" id="quizArea" style="display:none;">
+      <!-- 进度条 -->
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="progressFill"></div>
+        <div class="progress-bar__text" id="progressText">0/60</div>
+      </div>
+
+      <!-- 题目区域 -->
+      <div class="question-area">
+        <div class="question-meta">
+          <span class="question-meta__index" id="questionIndex">第 1 题</span>
+          <span class="question-meta__count" id="questionCount">共 60 题</span>
+          <span class="question-meta__dimension" id="questionDimension"></span>
+        </div>
+
+        <h2 class="question-text" id="questionText">问题内容</h2>
+
+        <div class="likert-scale" id="options">
+          <!-- 5-point Likert scale buttons -->
+        </div>
+
+        <div class="actions">
+          <button id="prevBtn" class="btn btn--secondary" disabled>◀ 上一题</button>
+          <span class="actions__hint" id="navHint"></span>
+          <button id="nextBtn" class="btn btn--primary">下一题 ▶</button>
+        </div>
+
+        <!-- 快速跳转 -->
+        <div class="quick-nav" id="quickNav">
+          <span class="quick-nav__label">快速跳转：</span>
+          <div class="quick-nav__dots" id="quickNavDots"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 计算中动画 -->
+    <section class="calculating-card" id="calculatingArea" style="display:none;">
+      <div class="calculating-animation">
+        <div class="calculating-spinner"></div>
+        <p class="calculating-text" id="calculatingText">正在分析你的恋爱风格...</p>
+      </div>
+    </section>
+
+    <!-- 结果区域 -->
+    <section class="result-area" id="resultArea" style="display:none;">
+      <!-- 结果标签导航 -->
+      <nav class="result-tabs" id="resultTabs">
+        <button class="result-tab active" data-tab="profile">📊 维度总览</button>
+        <button class="result-tab" data-tab="detail">🔍 深度解读</button>
+        <button class="result-tab" data-tab="combined">🧩 组合分析</button>
+        <button class="result-tab" data-tab="summary">🚀 发展建议</button>
+      </nav>
+
+      <!-- Tab 1: 维度总览 -->
+      <div class="result-panel active" id="panel-profile">
+        <h3 class="panel-title">你的恋爱风格维度图谱</h3>
+        <div class="chart-container" id="barChart"></div>
+        <div class="dimension-cards" id="dimensionCards"></div>
+      </div>
+
+      <!-- Tab 2: 深度解读 -->
+      <div class="result-panel" id="panel-detail">
+        <h3 class="panel-title">维度深度解读</h3>
+        <div class="detail-selector" id="detailSelector"></div>
+        <div class="detail-content" id="detailContent"></div>
+      </div>
+
+      <!-- Tab 3: 组合分析 -->
+      <div class="result-panel" id="panel-combined">
+        <h3 class="panel-title">恋爱组合分析</h3>
+        <div id="combinedContent"></div>
+      </div>
+
+      <!-- Tab 4: 发展建议 -->
+      <div class="result-panel" id="panel-summary">
+        <h3 class="panel-title">个人成长建议总结</h3>
+        <div id="summaryContent"></div>
+      </div>
+
+      <!-- 操作按钮 -->
+      <div class="result-actions">
+        <button id="restartBtn" class="btn btn--secondary">🔄 重新测试</button>
+        <button id="copyBtn" class="btn btn--primary">📋 复制结果报告</button>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p>基于依恋理论(Attachment Theory)、爱情三角理论等公开学术资源 | 科学严谨 · 深入解读</p>
+    <p>结果仅供自我探索参考，不构成婚恋建议或临床诊断</p>
+  </footer>
+
+  <script src="config-data.js"></script>
+  <script src="report-templates.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

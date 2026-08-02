@@ -1,0 +1,178 @@
+{
+  "title": "恋爱风格深度测评",
+  "subtitle": "基于依恋理论 · 60题专业版",
+  "intro": "本测评融合<strong>依恋理论、爱情三角理论、情绪表达研究</strong>三大心理学框架，从<strong>依恋安全感、亲密开放度、浪漫表达力、关系理性度、冲突修复力</strong>五个核心维度，全面解析你的恋爱风格。60道题目，5级评分，科学严谨。约需5-8分钟完成。",
+  "disclaimer": "本测评基于依恋理论(Attachment Theory)、Sternberg爱情三角理论等公开学术资源改编。结果仅供自我探索参考，不构成临床诊断或婚恋建议。",
+
+  "dimensions": {
+    "AS": {
+      "id": "AS",
+      "name": "依恋安全感",
+      "englishName": "Attachment Security",
+      "icon": "🫂",
+      "description": "衡量你在恋爱中感受到的安全与信任程度，反映你是否能够安心依赖伴侣，以及面对分离和不确定性时的情绪反应。",
+      "highLabel": "安全依恋型",
+      "lowLabel": "焦虑依恋型"
+    },
+    "IO": {
+      "id": "IO",
+      "name": "亲密开放度",
+      "englishName": "Intimacy Openness",
+      "icon": "💝",
+      "description": "衡量你在情感上对伴侣敞开心扉的程度，反映你是否愿意分享内心世界、接纳情感脆弱，以及建立深层连接的能力。",
+      "highLabel": "情感开放型",
+      "lowLabel": "情感防卫型"
+    },
+    "RE": {
+      "id": "RE",
+      "name": "浪漫表达力",
+      "englishName": "Romantic Expressiveness",
+      "icon": "💌",
+      "description": "衡量你主动表达爱意和接收浪漫的能力，反映你在言语、行为和仪式感中传达情感的频率和方式。",
+      "highLabel": "热烈表达型",
+      "lowLabel": "含蓄内敛型"
+    },
+    "RR": {
+      "id": "RR",
+      "name": "关系理性度",
+      "englishName": "Relationship Rationality",
+      "icon": "🧭",
+      "description": "衡量你在恋爱中理性思考和判断的程度，反映你平衡感性与理性的能力，以及在感情决策中的审慎程度。",
+      "highLabel": "理性导航型",
+      "lowLabel": "感性随性型"
+    },
+    "CR": {
+      "id": "CR",
+      "name": "冲突修复力",
+      "englishName": "Conflict Repair",
+      "icon": "🕊️",
+      "description": "衡量你在恋爱关系中处理分歧和修复裂痕的能力，反映你面对冲突时的沟通方式、情绪调节以及和解的主动性。",
+      "highLabel": "修复高手型",
+      "lowLabel": "回避冲突型"
+    }
+  },
+
+  "scoreLevels": [
+    {"min": 12, "max": 24, "label": "低",   "percentile": "低于20%人群", "color": "#C97793"},
+    {"min": 25, "max": 35, "label": "偏低", "percentile": "20%-40%人群", "color": "#D48BA0"},
+    {"min": 36, "max": 44, "label": "中等", "percentile": "40%-60%人群", "color": "#F0A0B8"},
+    {"min": 45, "max": 53, "label": "偏高", "percentile": "60%-80%人群", "color": "#E8736E"},
+    {"min": 54, "max": 60, "label": "高",   "percentile": "高于80%人群", "color": "#D9433E"}
+  ],
+
+  "questions": [
+    {"id": 1,  "text": "即使伴侣没有及时回复消息，我也能保持平静，不会胡思乱想", "dimension": "AS", "reverse": false},
+    {"id": 2,  "text": "我相信即使发生争执，我们的关系也不会因此破裂", "dimension": "AS", "reverse": false},
+    {"id": 3,  "text": "在恋爱中，我能够安心地依赖对方，而不过分担心被抛弃", "dimension": "AS", "reverse": false},
+    {"id": 4,  "text": "我不会因为伴侣和朋友出去玩而感到焦虑或嫉妒", "dimension": "AS", "reverse": false},
+    {"id": 5,  "text": "我觉得自己值得被爱，不需要通过讨好来维系关系", "dimension": "AS", "reverse": false},
+    {"id": 6,  "text": "当伴侣需要个人空间时，我能自然地给予而不感到被冷落", "dimension": "AS", "reverse": false},
+    {"id": 7,  "text": "我经常担心对方对我的感情会突然变淡", "dimension": "AS", "reverse": true},
+    {"id": 8,  "text": "伴侣情绪稍有变化，我就会反复揣测是不是自己做错了什么", "dimension": "AS", "reverse": true},
+    {"id": 9,  "text": "我需要反复确认对方是真的喜欢我，才会感到安心", "dimension": "AS", "reverse": true},
+    {"id": 10, "text": "当关系进入平稳期时，我反而会觉得不安，怀疑是不是感情变淡了", "dimension": "AS", "reverse": true},
+    {"id": 11, "text": "我经常偷偷查看伴侣的社交媒体，以确认对方没有「异常」", "dimension": "AS", "reverse": true},
+    {"id": 12, "text": "想到可能会分手，我就会感到极度恐慌和无助", "dimension": "AS", "reverse": true},
+
+    {"id": 13, "text": "我愿意和伴侣分享自己内心深处的恐惧和不安", "dimension": "IO", "reverse": false},
+    {"id": 14, "text": "在伴侣面前流泪或示弱，对我来说是可以接受的", "dimension": "IO", "reverse": false},
+    {"id": 15, "text": "我相信向伴侣展示真实的自己，会让关系更加亲密", "dimension": "IO", "reverse": false},
+    {"id": 16, "text": "我乐于和伴侣讨论我们的关系现状和未来的期望", "dimension": "IO", "reverse": false},
+    {"id": 17, "text": "我可以自然地告诉伴侣「我需要你」而不觉得难为情", "dimension": "IO", "reverse": false},
+    {"id": 18, "text": "过去的感情创伤不会妨碍我向新的人敞开心扉", "dimension": "IO", "reverse": false},
+    {"id": 19, "text": "即使心里有很多话想说，我也常常在关键时刻咽了回去", "dimension": "IO", "reverse": true},
+    {"id": 20, "text": "我习惯把负面情绪藏起来，因为害怕对方看到我的「不完美」", "dimension": "IO", "reverse": true},
+    {"id": 21, "text": "当感情变得过于亲密时，我会下意识地想要拉开一些距离", "dimension": "IO", "reverse": true},
+    {"id": 22, "text": "我很难开口告诉伴侣自己真实的需求和渴望", "dimension": "IO", "reverse": true},
+    {"id": 23, "text": "我不太敢问对方「我们的关系算什么」，害怕得到不想听的答案", "dimension": "IO", "reverse": true},
+    {"id": 24, "text": "我觉得在感情中保持独立和自足，比袒露脆弱更安全", "dimension": "IO", "reverse": true},
+
+    {"id": 25, "text": "我喜欢通过言语直接告诉对方「我爱你」或「我想你」", "dimension": "RE", "reverse": false},
+    {"id": 26, "text": "我经常会给伴侣准备小惊喜，比如手写卡片或精心挑选的礼物", "dimension": "RE", "reverse": false},
+    {"id": 27, "text": "我会记得纪念日和重要日子，并为这些时刻赋予仪式感", "dimension": "RE", "reverse": false},
+    {"id": 28, "text": "在日常生活中，我习惯用拥抱、牵手等肢体接触表达亲密", "dimension": "RE", "reverse": false},
+    {"id": 29, "text": "我乐于在社交平台上分享与伴侣的幸福时刻", "dimension": "RE", "reverse": false},
+    {"id": 30, "text": "我能自然地赞美伴侣，让对方知道我被TA的哪些特质所吸引", "dimension": "RE", "reverse": false},
+    {"id": 31, "text": "我更习惯用行动而非语言来表达爱意，比如默默为对方做事", "dimension": "RE", "reverse": true},
+    {"id": 32, "text": "说肉麻的情话让我感到尴尬和不自在", "dimension": "RE", "reverse": true},
+    {"id": 33, "text": "我对纪念日和节日仪式感不太在意，觉得平平淡淡就很好", "dimension": "RE", "reverse": true},
+    {"id": 34, "text": "伴侣送我礼物时，我通常会表现得比较平淡，不会特别激动", "dimension": "RE", "reverse": true},
+    {"id": 35, "text": "在公共场合，我不太喜欢和伴侣有过于亲密的互动", "dimension": "RE", "reverse": true},
+    {"id": 36, "text": "即使心里很感动，我也很难用语言把对伴侣的欣赏说出口", "dimension": "RE", "reverse": true},
+
+    {"id": 37, "text": "在确定恋爱关系前，我会认真考虑双方的三观是否契合", "dimension": "RR", "reverse": false},
+    {"id": 38, "text": "当朋友指出我恋爱对象的问题时，我会冷静思考而不是一味反驳", "dimension": "RR", "reverse": false},
+    {"id": 39, "text": "即使非常喜欢对方，我也会观察TA在不同情境下的表现再做决定", "dimension": "RR", "reverse": false},
+    {"id": 40, "text": "我清楚自己在恋爱中最看重什么（如忠诚、上进、幽默等），并以此为标准", "dimension": "RR", "reverse": false},
+    {"id": 41, "text": "发现对方有原则性问题时，我能理性地选择分手而不是自我欺骗", "dimension": "RR", "reverse": false},
+    {"id": 42, "text": "我会给自己设定一段「了解期」，而不是一见钟情就立刻投入", "dimension": "RR", "reverse": false},
+    {"id": 43, "text": "即使理智告诉我不合适，我还是会因为心动而一头扎进去", "dimension": "RR", "reverse": true},
+    {"id": 44, "text": "朋友都觉得我「恋爱脑」，一谈恋爱就把其他事情抛在脑后", "dimension": "RR", "reverse": true},
+    {"id": 45, "text": "我经常在恋爱初期就幻想和对方结婚生子、共度余生的画面", "dimension": "RR", "reverse": true},
+    {"id": 46, "text": "明明已经看到对方的缺点和红旗信号，我还是选择性地忽略了", "dimension": "RR", "reverse": true},
+    {"id": 47, "text": "我很容易因为对方对你好了一点点，就加倍地投入和付出", "dimension": "RR", "reverse": true},
+    {"id": 48, "text": "每次分手后回头看，我都觉得自己当初「上头」得太快了", "dimension": "RR", "reverse": true},
+
+    {"id": 49, "text": "发生争吵后，我能主动迈出和解的第一步", "dimension": "CR", "reverse": false},
+    {"id": 50, "text": "在冲突中，我会努力理解对方的立场，而不是一味证明自己是对的", "dimension": "CR", "reverse": false},
+    {"id": 51, "text": "吵架之后我能睡得着觉，相信问题可以在冷静后好好解决", "dimension": "CR", "reverse": false},
+    {"id": 52, "text": "我会把分歧视为「我们vs问题」，而不是「我vs你」", "dimension": "CR", "reverse": false},
+    {"id": 53, "text": "即使很生气，我也能控制自己不说出会后悔的伤人的话", "dimension": "CR", "reverse": false},
+    {"id": 54, "text": "感情中出现矛盾后，我愿意主动寻求沟通而不是等待对方来哄", "dimension": "CR", "reverse": false},
+    {"id": 55, "text": "为了避免吵架，我通常会选择沉默或妥协，即使心里并不认同", "dimension": "CR", "reverse": true},
+    {"id": 56, "text": "发生争执后，我会长时间陷入低落情绪，难以恢复正常状态", "dimension": "CR", "reverse": true},
+    {"id": 57, "text": "过去的伤害即使已经道过歉，我还是会反复想起并翻旧账", "dimension": "CR", "reverse": true},
+    {"id": 58, "text": "在争论中，我常常控制不住情绪，说出的话比我真正想表达的更激烈", "dimension": "CR", "reverse": true},
+    {"id": 59, "text": "冷战是我处理关系中不愉快的常用方式", "dimension": "CR", "reverse": true},
+    {"id": 60, "text": "我觉得吵架就是伤感情，所以宁可把不满都压在心里也不说", "dimension": "CR", "reverse": true}
+  ],
+
+  "combinedProfiles": {
+    "profiles": [
+      {
+        "name": "💖 安然之爱 — 安全港湾型",
+        "conditions": {"AS": "high", "IO": "high", "CR": "high"},
+        "description": "你拥有极高的依恋安全感、亲密开放度和冲突修复力，是恋爱中的「安全基地」。你能够在爱中保持自信与从容，既敢于深情投入，又能给对方充足的信任和空间。你的伴侣和你在一起会感到被理解、被接纳、被治愈。",
+        "famous": "类似爱情模式：成熟健康的长期伴侣关系，如钱钟书与杨绛式的相濡以沫",
+        "advice": "你是许多人理想的伴侣类型。保持这份安全与温暖的同时，也要注意不要总承担「照顾者」的角色——偶尔允许自己也需要被照顾。"
+      },
+      {
+        "name": "🔥 飞蛾扑火 — 激情投入型",
+        "conditions": {"RE": "high", "RR": "low", "IO": "high"},
+        "description": "你拥有极高的浪漫表达力和情感开放度，同时关系理性度较低。你爱得热烈、爱得毫无保留，每一次恋爱都像电影般浓烈。你的爱如同绽放的烟花——绚烂夺目，但有时也会因为燃烧得太快而伤到自己。",
+        "famous": "类似爱情模式：《泰坦尼克号》Jack与Rose式的浪漫与不顾一切；作家三毛与荷西的炽热深情",
+        "advice": "你的爱珍贵而热烈，请把它留给值得的人。学会在投入之前稍作停留，给自己一点时间来辨别对方是否真正适合。深情不需要戒掉，但需要加上一层保护的滤镜。"
+      },
+      {
+        "name": "🧊 理性之爱 — 冷静分析型",
+        "conditions": {"RR": "high", "RE": "low", "IO": "low"},
+        "description": "你以高度的理性来对待恋爱，不轻易表露情感，也不容易被冲动左右。你的爱情观成熟而务实，像一位精明的投资者——在投入之前会仔细评估风险和回报。你很少「上头」，但也因此错过了一些心动的可能。",
+        "famous": "类似爱情模式：《傲慢与偏见》达西式的克制深情——爱在心中，却不溢于言表",
+        "advice": "理性是你的保护伞，但偶尔淋一场雨也无妨。试着放下一些控制，在安全的人和关系中允许自己「不理智」一次。有时候，最好的爱情恰恰是那个让你觉得「不像自己」的人带来的。"
+      },
+      {
+        "name": "🌊 潮汐之爱 — 焦虑起伏型",
+        "conditions": {"AS": "low", "RE": "high", "CR": "low"},
+        "description": "你的依恋安全感较低，但浪漫表达力很高，冲突修复力也较低。在恋爱中，你的情绪像潮汐一样起伏不定——热情时能给对方全世界，焦虑时又需要对方反复确认爱意。你渴望稳定的爱，但内心的不安全感却让你在关系中反复波动。",
+        "famous": "类似爱情模式：《一天》中Emma与Dexter的漫长拉扯——深爱却总在错过和犹豫",
+        "advice": "你需要明白：伴侣的「没有及时回复」不等于「不爱你了」。尝试在自己焦虑时先深呼吸，用事实而非恐惧来解读对方的行为。建立自己的安全感来源——不只从伴侣身上索取，也学会从自己内心获取力量。"
+      },
+      {
+        "name": "🛡️ 堡垒之爱 — 自我防卫型",
+        "conditions": {"IO": "low", "AS": "low", "CR": "high"},
+        "description": "你虽然善于处理冲突，但情感开放度和依恋安全感都偏低。你像一个拥有高墙的城堡——对外表现得坚强、理性、善于解决问题，但内心深处的柔软却很少向人展示。你害怕一旦敞开就会受伤，所以让自己成为一个「不需要任何人」的人。",
+        "famous": "类似爱情模式：许多事业成功但感情疏离的现代都市人——外表光鲜，内心防御重重",
+        "advice": "你学会了用独立来保护自己，但真正的亲密需要一点冒险的勇气。你可以从最小的袒露开始——分享一个不完美的小习惯、承认一件让你脆弱的小事。信任是逐步建立的，但前提是你愿意给信任一个开始的机会。"
+      },
+      {
+        "name": "🎭 镜中之爱 — 自我探索型",
+        "conditions": {"RR": "high", "IO": "high", "RE": "medium"},
+        "description": "你既能在情感上保持开放，又能理性地审视关系。你在恋爱中像一个同时体验和观察自己的人——你投入感情，但也时刻反思「我从这段关系中学会了什么」。这种双重意识让你的每段恋爱都成为一次自我成长的旅程。",
+        "famous": "类似爱情模式：《爱在黎明破晓前》Celine与Jesse式的深度对话型恋爱——爱不仅是心动，更是思想碰撞",
+        "advice": "你拥有难得的「在爱中成长」的能力。注意不要因为过度分析而错过了享受当下的纯粹快乐。有时候，爱情不需要被「理解」，只需要被「感受」。"
+      }
+    ]
+  },
+
+  "reportTemplates": {}
+}
